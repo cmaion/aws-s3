@@ -8,10 +8,9 @@ module AWS
         
         def prepare_path(path)
           path = path.remove_extended unless path.valid_utf8?
-          URI.escape(path)
+          URI.escape(path).gsub('%253F', '%3F')
         end
       end
-      
       attr_reader :access_key_id, :secret_access_key, :http, :options
       
       # Creates a new connection. Connections make the actual requests to S3, though these requests are usually 
