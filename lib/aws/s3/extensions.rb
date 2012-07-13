@@ -1,3 +1,4 @@
+#encoding: BINARY
 #:stopdoc:
 
 class Hash
@@ -37,6 +38,11 @@ class String
       self
     end
   end
+  
+  def tap
+    yield(self)
+    self
+  end unless ''.respond_to?(:tap)
   
   def previous
     dup.previous!
