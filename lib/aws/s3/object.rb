@@ -186,7 +186,7 @@ module AWS
           source_key      = path!(source_bucket, key)
           default_options = {'x-amz-copy-source' => source_key}
           target_key      = path!(target_bucket, copy_key)
-          returning put(target_key, default_options).tap do
+          put(target_key, default_options).tap do
             acl(copy_key, target_bucket, acl(key, source_bucket)) if options[:copy_acl]
           end
         end
