@@ -8,7 +8,7 @@ module AWS
 
         def prepare_path(path)
           path = path.remove_extended unless path.valid_utf8?
-          URI.escape(path).gsub('%253F', '%3F')
+          URI.escape(path).gsub('%253F', '%3F').gsub('\'', '%27')
         end
       end
       attr_reader :access_key_id, :secret_access_key, :http, :options
